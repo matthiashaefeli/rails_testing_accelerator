@@ -21,7 +21,7 @@ class ClucksController < ApplicationController
 
   # POST /clucks
   def create
-    @cluck = Cluck.new(cluck_params)
+    @cluck = current_user.clucks.new(cluck_params)
 
     if @cluck.save
       redirect_to @cluck, notice: 'Cluck was successfully created.'

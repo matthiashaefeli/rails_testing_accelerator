@@ -1,0 +1,14 @@
+<p id="notice"><%= notice %></p>
+
+<p>
+  <strong>Content:</strong>
+  <%= @cluck.content %>
+</p>
+
+<p>
+  <strong>User:</strong>
+  <%= @cluck.user_id %>
+</p>
+
+<%= link_to 'Edit', edit_cluck_path(@cluck) %> |
+<%= link_to 'Back', clucks_path %>

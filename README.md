@@ -10,6 +10,8 @@ Note: Cluckr uses PostgreSQL, so you'll need to have PostgreSQL installed in ord
 $ git@github.com:jasonswett/cluckr-2020a.git cluckr
 $ cd cluckr
 $ bundle install
+$ rails db:create
+$ rails db:schema:load
 ````
 
 ## Running the server

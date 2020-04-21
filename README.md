@@ -4,6 +4,8 @@ Cluckr is a Twitter clone that we'll be building during [Rails Testing Accelerat
 
 ## How to get set up locally
 
+Note: Cluckr uses PostgreSQL, so you'll need to have PostgreSQL installed in order to get the project running.
+
 ```
 $ git@github.com:jasonswett/cluckr-2020a.git cluckr
 $ cd cluckr

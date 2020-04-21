@@ -1,5 +1,7 @@
 # Cluckr
 
+Cluckr is a Twitter clone that we'll be building during [Rails Testing Accelerator](https://www.codewithjason.com/rails-testing-accelerator/).
+
 ## How to get set up locally
 
 ```

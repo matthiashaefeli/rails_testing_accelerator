@@ -1,3 +1,10 @@
-// Place all the styles related to the clucks controller here.
-// They will automatically be included in application.css.
-// You can use Sass (SCSS) here: https://sass-lang.com/
+.cluck {
+  border: 1px solid #DDD;
+  margin: 20px 0;
+  padding: 20px;
+  max-width: 400px;
+}
+
+.cluck-content {
+  margin: 15px 0;
+}

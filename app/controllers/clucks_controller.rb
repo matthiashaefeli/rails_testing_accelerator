@@ -13,9 +13,6 @@ class ClucksController < ApplicationController
     @cluck = Cluck.new
   end
 
-  def edit
-  end
-
   def create
     @cluck = current_user.clucks.new(cluck_params)
 
@@ -23,14 +20,6 @@ class ClucksController < ApplicationController
       redirect_to @cluck, notice: 'Cluck was successfully created.'
     else
       render :new
-    end
-  end
-
-  def update
-    if @cluck.update(cluck_params)
-      redirect_to @cluck, notice: 'Cluck was successfully updated.'
-    else
-      render :edit
     end
   end
 

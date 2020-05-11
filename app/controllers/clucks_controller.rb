@@ -17,7 +17,7 @@ class ClucksController < ApplicationController
     @cluck = current_user.clucks.new(cluck_params)
 
     if @cluck.save
-      redirect_to @cluck, notice: 'Cluck was successfully created.'
+      redirect_to clucks_path, notice: 'Cluck was successfully created.'
     else
       render :new
     end

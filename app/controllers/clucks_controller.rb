@@ -2,7 +2,13 @@ class ClucksController < ApplicationController
   before_action :set_cluck, only: [:show, :edit, :update, :destroy]
 
   def index
-    @clucks = Cluck.all
+    user = User.find_by(id: params[:user_id])
+
+    if user.present?
+      @clucks = user.clucks
+    else
+      @clucks = Cluck.all
+    end
   end
 
   def show

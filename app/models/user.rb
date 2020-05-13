@@ -5,4 +5,8 @@ class User < ApplicationRecord
          :recoverable, :rememberable, :validatable
 
   has_many :clucks
+
+  def to_s
+    email
+  end
 end

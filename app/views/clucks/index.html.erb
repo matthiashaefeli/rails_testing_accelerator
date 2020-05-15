@@ -6,17 +6,15 @@
   <h1>Clucks</h1>
 <% end %>
 
-<% @items.each do |item| %>
+<% @clucks.each do |cluck| %>
   <div class="cluck">
-    <b><%= link_to item.cluck.user.email, user_clucks_path(item.cluck.user) %></b>
+    <b><%= link_to cluck.user.email, user_clucks_path(cluck.user) %></b>
 
-    <%= link_to 'Show', item.cluck %>
-    <div class="cluck-content"><%= item.cluck.content %></div>
+    <%= link_to 'Show', cluck %>
+    <div class="cluck-content"><%= cluck.content %></div>
 
-    <%= link_to 'Recluck', reclucks_path(cluck_id: item.cluck.id), method: :post %>
-
-    <% if item.cluck.user == current_user %>
-      <div><%= link_to 'Destroy', item.cluck, method: :delete, data: { confirm: 'Are you sure?' } %></div>
+    <% if cluck.user == current_user %>
+      <div><%= link_to 'Destroy', cluck, method: :delete, data: { confirm: 'Are you sure?' } %></div>
     <% end %>
   </div>
 <% end %>

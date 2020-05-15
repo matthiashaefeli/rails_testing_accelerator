@@ -10,4 +10,8 @@ class Cluck < ApplicationRecord
   def reclucked_by?(user)
     reclucks.exists?(user: user)
   end
+
+  def recluck_for(user)
+    reclucks.find_by(user: user)
+  end
 end

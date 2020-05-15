@@ -5,9 +5,9 @@ class ClucksController < ApplicationController
     @user = User.find_by(id: params[:user_id])
 
     if @user.present?
-      @clucks = @user.clucks
+      @items = @user.clucks + @user.reclucks
     else
-      @clucks = Cluck.all
+      @items = Cluck.all
     end
   end
 

@@ -8,7 +8,8 @@
 
 <% @clucks.each do |cluck| %>
   <div class="cluck">
-    <b><%= cluck.user.email %></b>
+    <b><%= link_to cluck.user.email, user_clucks_path(cluck.user) %></b>
+
     <%= link_to 'Show', cluck %>
     <div class="cluck-content"><%= cluck.content %></div>
 

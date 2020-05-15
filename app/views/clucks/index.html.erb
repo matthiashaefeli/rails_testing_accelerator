@@ -13,7 +13,9 @@
     <%= link_to 'Show', item.cluck %>
     <div class="cluck-content"><%= item.cluck.content %></div>
 
-    <%= link_to 'Recluck', reclucks_path(cluck_id: item.cluck.id), method: :post %>
+    <% unless item.cluck.reclucked_by?(current_user) %>
+      <%= link_to 'Recluck', reclucks_path(cluck_id: item.cluck.id), method: :post %>
+    <% end %>
 
     <% if item.cluck.user == current_user %>
       <div><%= link_to 'Destroy', item.cluck, method: :delete, data: { confirm: 'Are you sure?' } %></div>

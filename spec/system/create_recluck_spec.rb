@@ -6,14 +6,27 @@ RSpec.describe 'Reclucking', type: :system do
     login_as(@me)
   end
 
-  it 'works' do
-    other_user = FactoryBot.create(:user)
-    cluck = FactoryBot.create(:cluck, user: other_user)
+  context 'cluck has not been reclucked' do
+    it 'can be reclucked' do
+      other_user = FactoryBot.create(:user)
+      cluck = FactoryBot.create(:cluck, user: other_user)
 
-    visit user_clucks_path(other_user)
-    click_on 'Recluck'
+      visit user_clucks_path(other_user)
+      click_on 'Recluck'
 
-    expect(page).to have_content(@me.email)
-    expect(page).to have_content(cluck.content)
+      expect(page).to have_content(@me.email)
+      expect(page).to have_content(cluck.content)
+    end
+  end
+
+  context 'cluck has already been reclucked' do
+    it 'does not have a recluck link' do
+      other_user = FactoryBot.create(:user)
+      cluck = FactoryBot.create(:cluck, user: other_user)
+      FactoryBot.create(:recluck, cluck: cluck, user: @me)
+
+      visit user_clucks_path(other_user)
+      expect(page).not_to have_content('Recluck')
+    end
   end
 end

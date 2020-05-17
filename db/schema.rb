@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2020_05_15_204019) do
+ActiveRecord::Schema.define(version: 2020_05_17_135731) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plperl"
@@ -23,6 +23,16 @@ ActiveRecord::Schema.define(version: 2020_05_15_204019) do
     t.datetime "created_at", precision: 6, null: false
     t.datetime "updated_at", precision: 6, null: false
     t.index ["user_id"], name: "index_clucks_on_user_id"
+  end
+
+  create_table "likes", force: :cascade do |t|
+    t.bigint "cluck_id", null: false
+    t.bigint "user_id", null: false
+    t.datetime "created_at", precision: 6, null: false
+    t.datetime "updated_at", precision: 6, null: false
+    t.index ["cluck_id", "user_id"], name: "index_likes_on_cluck_id_and_user_id", unique: true
+    t.index ["cluck_id"], name: "index_likes_on_cluck_id"
+    t.index ["user_id"], name: "index_likes_on_user_id"
   end
 
   create_table "reclucks", force: :cascade do |t|
@@ -48,6 +58,8 @@ ActiveRecord::Schema.define(version: 2020_05_15_204019) do
   end
 
   add_foreign_key "clucks", "users"
+  add_foreign_key "likes", "clucks"
+  add_foreign_key "likes", "users"
   add_foreign_key "reclucks", "clucks"
   add_foreign_key "reclucks", "users"
 end

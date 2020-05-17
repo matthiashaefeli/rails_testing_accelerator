@@ -13,8 +13,16 @@
     <%= link_to 'Show', item.cluck %>
     <div class="cluck-content"><%= item.cluck.content %></div>
 
+    <% if item.cluck.likes.any? %>
+      <div><%= pluralize item.cluck.likes.count, 'like' %></div>
+    <% end %>
+
     <% if item.cluck.reclucks.any? %>
       <div><%= pluralize item.cluck.reclucks.count, 'recluck' %></div>
+    <% end %>
+
+    <% if !item.cluck.liked_by?(current_user) %>
+      <%= link_to 'Like', likes_path(cluck_id: item.cluck.id), method: :post %>
     <% end %>
 
     <% if item.cluck.reclucked_by?(current_user) %>

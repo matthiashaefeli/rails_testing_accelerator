@@ -12,6 +12,10 @@ class Cluck < ApplicationRecord
     likes.exists?(user: user)
   end
 
+  def like_for(user)
+    likes.find_by(user: user)
+  end
+
   def reclucked_by?(user)
     reclucks.exists?(user: user)
   end

@@ -6,7 +6,10 @@ class LikesController < ApplicationController
   end
 
   def destroy
-    Like.find(params[:id]).destroy
-    redirect_to user_clucks_path(current_user)
+    like = Like.find(params[:id])
+    cluck = like.cluck
+    like.destroy
+
+    redirect_to user_clucks_path(cluck.user)
   end
 end

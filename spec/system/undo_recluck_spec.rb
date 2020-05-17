@@ -1,6 +1,6 @@
 require 'rails_helper'
 
-RSpec.describe 'Reclucking', type: :system do
+RSpec.describe 'Undo recluck', type: :system do
   before do
     @me = FactoryBot.create(:user)
     login_as(@me)

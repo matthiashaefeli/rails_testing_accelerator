@@ -13,6 +13,8 @@
     <%= link_to 'Show', item.cluck %>
     <div class="cluck-content"><%= item.cluck.content %></div>
 
+    <div><%= pluralize item.cluck.reclucks.count, 'recluck' %></div>
+
     <% if item.cluck.reclucked_by?(current_user) %>
       <%= link_to 'Undo recluck', recluck_path(id: item.cluck.recluck_for(current_user).id), method: :delete %>
     <% else %>

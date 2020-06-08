@@ -29,7 +29,7 @@ group :development, :test do
   gem 'rspec-rails', '~> 4.0.0'
   gem 'capybara'
   gem 'webdrivers'
-  gem 'factory_bot'
+  gem 'factory_bot_rails'
   gem 'faker', :git => 'https://github.com/faker-ruby/faker.git', :branch => 'master'
 end
 

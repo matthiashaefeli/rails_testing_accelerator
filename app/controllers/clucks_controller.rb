@@ -12,11 +12,8 @@ class ClucksController < ApplicationController
 
   # GET /clucks/new
   def new
+    redirect_to new_user_session_path unless current_user
     @cluck = Cluck.new
-  end
-
-  # GET /clucks/1/edit
-  def edit
   end
 
   # POST /clucks
@@ -24,7 +21,7 @@ class ClucksController < ApplicationController
     @cluck = current_user.clucks.new(cluck_params)
 
     if @cluck.save
-      redirect_to @cluck, notice: 'Cluck was successfully created.'
+      redirect_to clucks_path, notice: 'Cluck was successfully created.'
     else
       render :new
     end

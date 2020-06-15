@@ -1,13 +1,7 @@
 <h1>Clucks</h1>
 
 <% @clucks.each do |cluck| %>
-  <div class="clucks">
-    <p><b><%= cluck.user.email %></b> <%= link_to 'Show', cluck_path(cluck) %></p>
-    <p><%= cluck.content %></p>
-    <% if current_user == cluck.user %>
-      <p><%= link_to 'Destroy', cluck, method: :delete, data: { confirm: 'Are you sure?' } %></p>
-    <% end %>
-  </div>
+  <%= render partial: 'cluck', object: cluck %>
 <% end %>
 
 <br>

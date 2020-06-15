@@ -27,6 +27,10 @@ class ClucksController < ApplicationController
     end
   end
 
+  def user_clucks
+    @user = User.find(params[:id])
+  end
+
   # PATCH/PUT /clucks/1
   def update
     if @cluck.update(cluck_params)

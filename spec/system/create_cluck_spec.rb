@@ -12,7 +12,7 @@ RSpec.describe 'Create cluck', type: :system do
     click_on 'New Cluck'
     fill_in 'Content', with: 'test cluck'
     click_button 'Create Cluck'
-    expect(page).to have_text('Cluck was successfully created')
+    expect(page).to have_text('Cluck was successfully created', count: 1)
   end
 
   it "can't create cluck with empty content" do

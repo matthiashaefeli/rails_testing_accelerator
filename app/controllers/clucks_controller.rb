@@ -12,6 +12,7 @@ class ClucksController < ApplicationController
 
   # GET /clucks/new
   def new
+    redirect_to new_user_session_path unless current_user
     @cluck = Cluck.new
   end
 

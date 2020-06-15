@@ -16,10 +16,6 @@ class ClucksController < ApplicationController
     @cluck = Cluck.new
   end
 
-  # GET /clucks/1/edit
-  def edit
-  end
-
   # POST /clucks
   def create
     @cluck = current_user.clucks.new(cluck_params)

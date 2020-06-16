@@ -1,0 +1,6 @@
+<% @user.clucks.each do |cluck| %>
+  <%= render partial: 'cluck', object: cluck %>
+<% end %>
+
+<%= link_to 'Back', clucks_path %>
+

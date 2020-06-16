@@ -5,4 +5,6 @@ class User < ApplicationRecord
          :recoverable, :rememberable, :validatable
 
   has_many :clucks
+  has_many :reclucks
+  # has_many :clucks, through: :reclucks
 end

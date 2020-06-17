@@ -2,6 +2,9 @@
   <p><b><%= link_to cluck.user.email, users_cluck_path(cluck.user) %></b> <%= link_to 'Show', cluck_path(cluck) %></p>
   <p><%= cluck.content %></p>
   <% if current_user != cluck.user %>
+    <% if @user_clucks %>
+      <p><%= link_to 'Undo Recluck', recluck_path(cluck), method: :delete %></p>
+    <% end %>
     <p><%= link_to 'Recluck', reclucks_path(cluck: cluck), method: :post %></p>
   <% else %>
     <p><%= link_to 'Destroy', cluck, method: :delete, data: { confirm: 'Are you sure?' } %></p>

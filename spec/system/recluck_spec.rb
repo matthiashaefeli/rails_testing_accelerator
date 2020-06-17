@@ -25,4 +25,19 @@ RSpec.describe 'recluck', type: :system do
     visit users_cluck_path(user)
     expect(page).to have_content(cluck.user.email)
   end
+
+  it 'shows a undo recluck link on my profile' do
+    recluck = FactoryBot.create(:recluck, user: FactoryBot.create(:user))
+    login_as(recluck.user)
+    visit users_cluck_path(recluck.user)
+    expect(page).to have_content('Undo Recluck')
+  end
+
+  it 'delete recluck' do
+    recluck = FactoryBot.create(:recluck, user: FactoryBot.create(:user))
+    login_as(recluck.user)
+    visit users_cluck_path(recluck.user)
+    click_on 'Undo Recluck'
+    expect(page).not_to have_content(recluck.cluck.content)
+  end
 end

@@ -28,7 +28,10 @@ class ClucksController < ApplicationController
   end
 
   def user_clucks
-    @user = User.find(params[:id])
+    user = User.find(params[:id])
+    user_clucks = user.clucks
+    reclucks = Recluck.where(user: current_user).map { |r| r.cluck }
+    @clucks = user_clucks + reclucks
   end
 
   # PATCH/PUT /clucks/1

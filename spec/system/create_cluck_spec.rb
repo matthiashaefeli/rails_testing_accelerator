@@ -1,8 +1,6 @@
 require 'rails_helper'
 
 RSpec.describe 'Create cluck', type: :system do
-  let!(:user) { FactoryBot.create(:user) }
-
   before(:each) do
     login_as(FactoryBot.create(:user))
   end

@@ -1,6 +1,6 @@
 FactoryBot.define do
   factory :recluck do
-    cluck { nil }
-    user { nil }
+    cluck
+    user
   end
 end

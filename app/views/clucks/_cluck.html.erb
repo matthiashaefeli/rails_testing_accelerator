@@ -1,5 +1,5 @@
 <div class="clucks">
-  <p><b><%= link_to cluck.user.email, users_cluck_path(cluck.user.id) %></b> <%= link_to 'Show', cluck_path(cluck) %></p>
+  <p><b><%= link_to cluck.user.email, users_cluck_path(cluck.user) %></b> <%= link_to 'Show', cluck_path(cluck) %></p>
   <p><%= cluck.content %></p>
   <% if current_user != cluck.user %>
     <p><%= link_to 'Recluck', reclucks_path(cluck: cluck), method: :post %></p>

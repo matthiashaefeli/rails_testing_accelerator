@@ -32,6 +32,7 @@ class ClucksController < ApplicationController
     user_clucks = user.clucks
     reclucks = Recluck.where(user: current_user).map { |r| r.cluck }
     @clucks = user_clucks + reclucks
+    @user_clucks = true
   end
 
   # PATCH/PUT /clucks/1

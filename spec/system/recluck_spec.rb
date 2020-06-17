@@ -3,8 +3,7 @@ require 'rails_helper'
 RSpec.describe 'recluck', type: :system do
 
   it 'has a recluck botton only on other clucks' do
-    user = FactoryBot.create(:user)
-    cluck = FactoryBot.create(:cluck, user: user)
+    cluck = FactoryBot.create(:cluck)
     login_as(FactoryBot.create(:user))
     visit clucks_path
     expect(page).to have_content('Recluck')
@@ -18,12 +17,12 @@ RSpec.describe 'recluck', type: :system do
   end
 
   it 'click on recluck on somebody elses cluck shows cluck in my profile' do
+    cluck = FactoryBot.create(:cluck)
     user = FactoryBot.create(:user)
-    cluck = FactoryBot.create(:cluck, user: user)
-    login_as(FactoryBot.create(:user))
+    login_as(user)
     visit clucks_path
     click_on 'Recluck'
-    # go to my profile
-    # check if cluck is there
+    visit users_cluck_path(user)
+    expect(page).to have_content(cluck.user.email)
   end
 end

@@ -5,7 +5,7 @@
     <% if @user_clucks %>
       <p><%= link_to 'Undo Recluck', recluck_path(cluck), method: :delete %></p>
     <% end %>
-    <p><%= link_to 'Recluck', reclucks_path(cluck: cluck), method: :post %></p>
+    <p><%= link_to 'Recluck', reclucks_path(cluck: cluck), method: :post %> <%= cluck.reclucks.count == 0 ? '' : cluck.reclucks.count %></p>
   <% else %>
     <p><%= link_to 'Destroy', cluck, method: :delete, data: { confirm: 'Are you sure?' } %></p>
   <% end %>

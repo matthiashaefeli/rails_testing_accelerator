@@ -17,4 +17,14 @@ RSpec.describe 'likes', type: :system do
       expect(page).to have_content('Likes 1')
     end
   end
+
+  context 'create like' do
+    it 'create new like' do
+      cluck = FactoryBot.create(:cluck)
+      login_as(FactoryBot.create(:user))
+      visit clucks_path
+      click_on 'Likes'
+      expect(page).to have_content('Likes 1')
+    end
+  end
 end

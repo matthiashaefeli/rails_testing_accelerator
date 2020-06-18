@@ -9,4 +9,5 @@
   <% else %>
     <p><%= link_to 'Destroy', cluck, method: :delete, data: { confirm: 'Are you sure?' } %></p>
   <% end %>
+  <p><%= link_to 'Likes', likes_path(cluck: cluck), method: :post %> <%= cluck.likes.count == 0 ? '' : cluck.likes.count %></p>
 </div>

@@ -6,5 +6,5 @@ class User < ApplicationRecord
 
   has_many :clucks
   has_many :reclucks
-  # has_many :clucks, through: :reclucks
+  has_many :likes
 end

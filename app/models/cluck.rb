@@ -4,13 +4,13 @@ class Cluck < ApplicationRecord
   has_many :likes
   validates :content, presence: true, length: { maximum: 100 }
   validate :content_length
-  validate :uniq_content_per_day
-  before_save :strip_content
+  validate :uniq_content_per_day, on: :create
+  validate :strip_content, on: :create
 
   def uniq_content_per_day
-    date = ( created_at || Date.current ).to_date
-    if self.class.exists? ["DATE(created_at) = DATE(?) AND content = ?", date, self.content]
-      errors.add(:base, "content is not unique for #{date}")
+    date = Date.current.to_date
+    if Cluck.exists? ["DATE(created_at) = DATE(?) AND content = ?", date, self.content.strip]
+      cluck.errors.add(:base, "content is not unique for #{date}")
     end
   end
 

@@ -9,12 +9,12 @@ RSpec.describe 'Creating a cluck', type: :system do
     context 'valid cluck' do
       before do
         visit new_cluck_path
-        fill_in 'Content', with: 'Hello'
+        fill_in 'Content', with: 'Hello world with 8 words test for tests'
         click_on 'Create Cluck'
       end
 
       it 'works' do
-        expect(page).to have_content('Hello')
+        expect(page).to have_content('Hello world with 8 words test for tests')
       end
 
       describe 'confirmation message' do

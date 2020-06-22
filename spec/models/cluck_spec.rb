@@ -20,7 +20,7 @@ RSpec.describe Cluck, type: :model do
 
   context 'word length' do
     it 'count words of content' do
-      content = 'three word tes'
+      content = 'three word test'
       cluck = FactoryBot.build(:cluck, content: content)
       expect(cluck.content_word_count).to eq(3) 
     end

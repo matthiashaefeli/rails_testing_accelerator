@@ -2,7 +2,7 @@ class Cluck < ApplicationRecord
   belongs_to :user
   has_many :reclucks
   has_many :likes
-  validates :content, presence: true
+  validates :content, presence: true, length: { maximum: 100 }
   validate :content_length
 
   def content_length

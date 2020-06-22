@@ -25,4 +25,21 @@ RSpec.describe Cluck, type: :model do
       expect(cluck.content_word_count).to eq(3) 
     end
   end
+
+  context '100 character limit' do
+    it 'content with more then 100 chars' do
+      content = 'ldpsosidnmpwe ' * 8
+      cluck = FactoryBot.build(:cluck, content: content)
+      cluck.save
+      expect(cluck).not_to be_valid
+      expect(cluck.errors.messages[:content]).to include('is too long (maximum is 100 characters)')
+    end
+
+    it 'content with less then 100 chars' do
+      content = 'klk7 ' * 8
+      cluck = FactoryBot.build(:cluck, content: content)
+      cluck.save
+      expect(cluck).to be_valid
+    end
+  end
 end

@@ -3,6 +3,15 @@ class Cluck < ApplicationRecord
   has_many :reclucks
   has_many :likes
   validates :content, presence: true
+  validate :content_length
+
+  def content_length
+    cluck.errors.add(:base, 'cluck must be 8 words long') if content_word_count != 8
+  end
+
+  def content_word_count
+    cluck.content.split(' ').count
+  end
 
   def cluck
     self

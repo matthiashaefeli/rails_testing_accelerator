@@ -4,6 +4,11 @@ class Cluck < ApplicationRecord
   has_many :likes
   validates :content, presence: true, length: { maximum: 100 }
   validate :content_length
+  before_save :strip_content
+
+  def strip_content
+    cluck.content = cluck.content.strip
+  end
 
   def content_length
     cluck.errors.add(:base, 'cluck must be 8 words long') if content_word_count != 8

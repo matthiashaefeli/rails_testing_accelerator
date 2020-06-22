@@ -42,4 +42,12 @@ RSpec.describe Cluck, type: :model do
       expect(cluck).to be_valid
     end
   end
+
+  context 'trailing and leading spaces' do
+    it 'deletes all trailing and leading spaces' do
+      content = ' ldpsosidn' * 8
+      cluck = FactoryBot.create(:cluck, content: content)
+      expect(cluck.content).to eq('ldpsosidn ' * 7 + 'ldpsosidn')
+    end
+  end
 end

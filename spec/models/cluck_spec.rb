@@ -1,4 +1,5 @@
 require 'rails_helper'
+include ActiveSupport::Testing::TimeHelpers
 
 RSpec.describe Cluck, type: :model do
   context '8 word length content' do
@@ -48,6 +49,27 @@ RSpec.describe Cluck, type: :model do
       content = ' ldpsosidn' * 8
       cluck = FactoryBot.create(:cluck, content: content)
       expect(cluck.content).to eq('ldpsosidn ' * 7 + 'ldpsosidn')
+    end
+  end
+
+  context 'same content' do
+    it 'can not create same content on the same day' do
+      content = 'hello ' * 8
+      cluck_one = FactoryBot.create(:cluck, content: content)
+      cluck = FactoryBot.build(:cluck, content: content)
+      cluck.save
+      expect(cluck).not_to be_valid
+      expect(cluck.errors.full_messages).to include("content is not unique for #{Date.current.to_date}")
+    end
+
+    it 'can create same content on next day' do
+      travel_to(1.day.ago)
+      content = 'hello ' * 8
+      cluck_one = FactoryBot.create(:cluck, content: content)
+      travel(1.day)
+      cluck = FactoryBot.build(:cluck, content: content)
+      cluck.save
+      expect(cluck).to be_valid
     end
   end
 end

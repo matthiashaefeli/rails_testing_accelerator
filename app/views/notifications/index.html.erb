@@ -1,0 +1,6 @@
+<h1>Notifications</h1>
+<% @likes.each do |like| %>
+  <div>
+    <%= like.user %> liked <%= like.cluck.content %>
+  </div>
+<% end %>

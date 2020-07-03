@@ -28,4 +28,16 @@ RSpec.describe 'Deleting a cluck', type: :system do
       expect(page).to have_content('Destroy', count: 1)
     end
   end
+
+  context 'cluck has a like' do
+    it 'works' do
+      cluck = FactoryBot.create(:cluck)
+      FactoryBot.create(:like, cluck: cluck)
+      login_as(cluck.user)
+      visit clucks_path
+      accept_alert do
+        click_on 'Destroy'
+      end
+    end
+  end
 end

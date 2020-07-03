@@ -1,11 +1,12 @@
 class Cluck < ApplicationRecord
   belongs_to :user
   has_many :reclucks
-  has_many :likes
+  has_many :likes, dependent: :destroy
   validates :content, presence: true, length: { maximum: 100 }
   validate :content_length
   validate :uniq_content_per_day, on: :create
   validate :strip_content, on: :create
+
 
   def uniq_content_per_day
     date = Date.current.to_date
